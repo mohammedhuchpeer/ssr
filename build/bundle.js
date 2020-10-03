@@ -421,6 +421,10 @@ var _reactRedux = __webpack_require__(10);
 
 var _index = __webpack_require__(14);
 
+var _users = __webpack_require__(19);
+
+var _users2 = _interopRequireDefault(_users);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -442,18 +446,6 @@ var Userlist = exports.Userlist = function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchUsers();
-      console.log(this.props);
-    }
-  }, {
-    key: "renderUser",
-    value: function renderUser() {
-      return this.props.users.map(function (user) {
-        return _react2.default.createElement(
-          "li",
-          { key: user.id },
-          user.name
-        );
-      });
     }
   }, {
     key: "render",
@@ -466,11 +458,7 @@ var Userlist = exports.Userlist = function (_Component) {
           null,
           "Here is the list of users"
         ),
-        _react2.default.createElement(
-          "ul",
-          null,
-          this.renderUser
-        )
+        _react2.default.createElement(_users2.default, { users: this.props.users })
       );
     }
   }]);
@@ -478,11 +466,11 @@ var Userlist = exports.Userlist = function (_Component) {
   return Userlist;
 }(_react.Component);
 
-function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state) {
   return {
     users: state.users
   };
-}
+};
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, { fetchUsers: _index.fetchUsers })(Userlist);
 
@@ -492,6 +480,49 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps, { fetchUsers: _index
 /***/ (function(module, exports) {
 
 module.exports = require("babel-polyfill");
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Users = function Users(_ref) {
+  var users = _ref.users;
+
+  var renderUser = function renderUser() {
+    return users.map(function (user) {
+      return _react2.default.createElement(
+        "li",
+        { key: user.id },
+        user.name
+      );
+    });
+  };
+
+  return _react2.default.createElement(
+    "div",
+    null,
+    _react2.default.createElement(
+      "ul",
+      null,
+      renderUser
+    )
+  );
+};
+
+exports.default = Users;
 
 /***/ })
 /******/ ]);
