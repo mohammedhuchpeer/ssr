@@ -4,7 +4,6 @@ import { fetchUsers } from "../actions/index";
 import Users from "./users";
 
 export class Userlist extends Component {
-    
   componentDidMount() {
     this.props.fetchUsers();
   }
@@ -12,7 +11,7 @@ export class Userlist extends Component {
   render() {
     return (
       <div>
-        <p>Here is the list of users</p>
+        Here is the list of users
         <Users users={this.props.users} />
       </div>
     );

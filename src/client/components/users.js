@@ -6,7 +6,7 @@ const Users = ({ users }) => {
 
   return (
     <div>
-      <ul>{renderUser}</ul>
+      <ul>{renderUser()}</ul>
     </div>
   );
 };
